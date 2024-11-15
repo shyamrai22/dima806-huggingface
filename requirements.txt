@@ -2,3 +2,4 @@ Flask
 transformers
 Pillow
 torch
+torchvision
