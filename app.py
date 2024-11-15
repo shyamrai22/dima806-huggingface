@@ -15,5 +15,4 @@ def detect_emotion():
     predictions = emotion_model(image)
     return jsonify(predictions)
 
-if __name__ == '__main__':
-    app.run(debug=True)
+
