@@ -5,3 +5,4 @@ torch
 torchvision
 Gunicorn
 flask-cors
+opencv-python
