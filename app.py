@@ -1,4 +1,3 @@
-# backend/app.py
 from flask import Flask, request, jsonify
 from transformers import pipeline
 from PIL import Image
@@ -9,10 +8,21 @@ emotion_model = pipeline("image-classification", model="dima806/facial_emotions_
 
 @app.route('/detect_emotion', methods=['POST'])
 def detect_emotion():
-    if 'image' not in request.files:
-        return jsonify({"error": "No image provided"}), 400
-    image = Image.open(request.files['image'])
-    predictions = emotion_model(image)
-    return jsonify(predictions)
+    try:
+        if 'image' not in request.files:
+            return jsonify({"error": "No image provided"}), 400
+
+        # Load and preprocess the image
+        image_file = request.files['image']
+        image = Image.open(image_file).convert("RGB")  # Ensure image is in RGB format
+
+        # Run the model
+        predictions = emotion_model(image)
+        
+        # Return the top predictions
+        return jsonify(predictions), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
