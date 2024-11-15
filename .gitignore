@@ -1,1 +1,18 @@
-.vercel
+# Ignore Python bytecode files
+*.pyc
+*.pyo
+
+# Ignore environment directories
+venv/
+__pycache__/
+
+# Ignore logs
+*.log
+
+# Ignore IDE-specific files (e.g., VS Code)
+.vscode/
+.idea/
+
+# Ignore OS-generated files
+.DS_Store   # macOS
+Thumbs.db   # Windows
