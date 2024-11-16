@@ -4,9 +4,12 @@ from transformers import pipeline
 from PIL import Image
 import logging
 from collections import defaultdict
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 
+CORS(app, origins=["https://video-calling-website-v2.vercel.app/"])
 # Configure logging
 logging.basicConfig(level=logging.DEBUG)
 
